@@ -9,7 +9,7 @@ Before we dive into the details of CPD, let's briefly discuss the problem of poi
   
 ### Point Set Registration  
   
-Given two sets of points $X = $\{$x_1, x_2, ..., x_N$\} and $Y = $\{$y_1, y_2, ..., y_M$\}, the goal of point set registration is to find a transformation \(T\) such that when applied to \(X\), the transformed points are aligned as closely as possible to \(Y\).
+Given two sets of points $X = $\{${x_1, x_2, ..., x_N}$\} and $Y = $\{$y_1, y_2, ..., y_M$\}, the goal of point set registration is to find a transformation \(T\) such that when applied to \(X\), the transformed points are aligned as closely as possible to \(Y\).
 
 ### Iterative Closest Point (ICP) Algorithm  
   
