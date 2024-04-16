@@ -1,5 +1,6 @@
 # Tutorial: Coherent Point Drift (CPD) Algorithm for Point Set Registration
-
+## Comprehensive Breath Examination
+### Parth Ganeriwala
 In this tutorial, we will explore the Coherent Point Drift (CPD) algorithm for point set registration. Point set registration is the process of aligning two or more point clouds to find their spatial transformation. This is a fundamental problem in computer vision, robotics, medical imaging, and many other fields. CPD is a popular method for solving this problem due to its robustness and efficiency.
 
 ## Background
