@@ -9,7 +9,7 @@ Before we dive into the details of CPD, let's briefly discuss the problem of poi
   
 ### Point Set Registration  
   
-Given two sets of points $X = \{x_1, x_2, ..., x_N\}$ and $Y = \{y_1, y_2, ..., y_M\}$, the goal of point set registration is to find a transformation \(T\) such that when applied to \(X\), the transformed points are aligned as closely as possible to \(Y\).
+Given two sets of points $X = $\{$x_1, x_2, ..., x_N$\} and $Y = $\{$y_1, y_2, ..., y_M$\}, the goal of point set registration is to find a transformation \(T\) such that when applied to \(X\), the transformed points are aligned as closely as possible to \(Y\).
 
 ### Iterative Closest Point (ICP) Algorithm  
   
@@ -57,9 +57,9 @@ In the Maximization step, we update the parameters of the GMM and estimate the t
 
 ## Point Cloud Registration with CPD Example Code 
 #### (https://siavashk.github.io/2017/05/14/coherent-point-drift/)
-Let's start off with a simple toy example. Assume that we have two point clouds $X = \{ X1, X2, X3 \}$ and $Y = \{ Y1, Y2, Y3 \} $. These point clouds are shown in Figure 1 with red and blue circles, respectively. Our goal is to find the transformation that best aligns the two point clouds.
+Let's start off with a simple toy example. Assume that we have two point clouds $X = $\{$ X1, X2, X3 $\} and $Y = $\{$ Y1, Y2, Y3 $\} . These point clouds are shown in Figure 1 with red and blue circles, respectively. Our goal is to find the transformation that best aligns the two point clouds.
 
-In this toy example, the unknown transformation is a rotation around the origin (parameterized by $\theta$ followed by a translation (parameterized by \(t\)). Assume, the actual value of the unknown parameters is $\{ \theta=30^\circ, t=(0.2, 0.2) \}$. We can use numpy to define the two point clouds as seen in the following code snippet:
+In this toy example, the unknown transformation is a rotation around the origin (parameterized by $\theta$ followed by a translation (parameterized by \(t\)). Assume, the actual value of the unknown parameters is \{$ \theta=30^\circ, t=(0.2, 0.2) $\}. We can use numpy to define the two point clouds as seen in the following code snippet:
 
  ```python
 import numpy as np
@@ -80,7 +80,7 @@ yLabels = ["Y1", "Y2", "Y3"]
 
 Plotting the two point clouds results in Figure 1. Now, since this is a toy example, we already know the correspondences between points in the two point clouds. The corresponding points are linked using the black dashed line. If the correspondences are known, the solution to the rigid registration is known as the orthogonal Procrustes problem:
 
-$$\mathrm{argmin}_{R,t}\left\Vert{X - RY - t}\right\Vert^2, \quad \mathrm{s.t} \quad R^TR=I$$
+$$\mathrm{argmin}_{R,t}\Vert{X - RY - t}\Vert^2, \quad \mathrm{s.t} \quad R^TR=I$$
 
 ![Point Cloud Registration](/assets/cpd/registration1_1_0.png)<br/>
 
@@ -89,14 +89,14 @@ When correspondence is not explicitly known, point cloud registration algorithms
 
 We can assign an arbitrary correspondence probability to point clouds based on proximity. Figure 2 shows an example probability distribution based on proximity.
 
-Points that are closer than a radius of \\(r=0.2\\) would confident matches, and we would assign a correspondence confidence of \\(p=1.0\\) to them. Pairs such as \\(\left\(X1, Y1\right\)\\) and \\(\left\(X2, Y2\right\)\\) pairs have a distance between \\(r=0.2\\) and \\(r=0.4\\) units are probable but not confident matches, so we could assign a probability of \\(p=0.5\\) to them. Beyond this, there is probably no correspondence, so our probability would drop to zero.
+Points that are closer than a radius of \(r=0.2\) would confident matches, and we would assign a correspondence confidence of \(p=1.0\) to them. Pairs such as \(\(X1, Y1\)\) and \(\(X2, Y2\)\) pairs have a distance between \(r=0.2\) and \(r=0.4\) units are probable but not confident matches, so we could assign a probability of \(p=0.5\) to them. Beyond this, there is probably no correspondence, so our probability would drop to zero.
 
 Even though this approach is quite simple, it provides two distinct advantages. First, it allows us to assign correspondences so that we can solve the registration as a Procrustes problem. Furthermore, it also allows us to weigh the loss functional according to the correspondence probability.
 <br>
 ![Point Cloud Correspondences](/assets/cpd/registration1_2_0.png)<br/>
 
 ## Gaussian Mixture Models
-We will now side step from the point cloud registration problem briefly. Instead of dealing with \\(X, Y\\) point clouds directly, we construct a GMM from the moving point cloud, \\(Y\\), and treat \\(X\\) as observations from that GMM. In Figure 3, we have constructed a GMM where the three Gaussians have a variance of 0.75 units. Blue points, i.e. Gaussian centroids, are the transformed moving points (\\(Y\\)). Red points, i.e. the fixed point cloud \\(X\\), are observations from this GMM. Isocontours represent the log-likelihood that red points are sampled from this GMM.
+We will now side step from the point cloud registration problem briefly. Instead of dealing with \(X, Y\) point clouds directly, we construct a GMM from the moving point cloud, \(Y\), and treat \(X\) as observations from that GMM. In Figure 3, we have constructed a GMM where the three Gaussians have a variance of 0.75 units. Blue points, i.e. Gaussian centroids, are the transformed moving points (\(Y\)). Red points, i.e. the fixed point cloud \(X\), are observations from this GMM. Isocontours represent the log-likelihood that red points are sampled from this GMM.
 
 <br>![Constructed GMM](/assets/cpd/registration1_3_0.png)<br/>
 
@@ -104,9 +104,9 @@ We will now side step from the point cloud registration problem briefly. Instead
 In order to perform registration, we have to solve correspondence and moving point cloud transformation problems simultaneously. This is done through expectation-maximization (EM) optimization. To solve the correspondence problem, we need to find which Gaussian the observed point cloud was sampled from (E-step). This provides us with correspondence probability, similar to Figure 2. Once correspondences probabilities are known, we maximize the negative log-likelihood that the observed points were sampled from the GMM with respect to transformation parameters (M-step).
 
 ## Expectation Step
-In Figure 3, if there was only one Gaussian component in the mixture, then the probability that a point \\(x\\) is sampled from this Gaussian is given using probability density distribution of the [multivairate normal distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Density_function). For the 2D case, with isotropic Gaussians, this simplifies to:
+In Figure 3, if there was only one Gaussian component in the mixture, then the probability that a point \(x\) is sampled from this Gaussian is given using probability density distribution of the [multivairate normal distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Density_function). For the 2D case, with isotropic Gaussians, this simplifies to:
 
-$$p(X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp({-\frac{\left\Vert{X - RY - t}\right\Vert^2}{2\sigma^2}})$$
+$$p(X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp({-\frac{\Vert{X - RY - t}\Vert^2}{2\sigma^2}})$$
 
 However, since we are dealing with multiple Gaussians, we need to normalize this probability by the contribution of all Gaussian centroids. In the pycpd package, this is achieved (minor tweaks to simplify the explanation) using the following snippet:
 
@@ -139,7 +139,7 @@ def EStep(X, Y, sigma2):
 ```
 
 ## Maximization Step
-Once correspondence probabilities are known, i.e. \\(P\\), we can solve for the transformation parameters. In the case of rigid registration, these transform parameters are the rotation matrix and the translation vector. In the pycpd package, this is achieved using the following snippet:
+Once correspondence probabilities are known, i.e. \(P\), we can solve for the transformation parameters. In the case of rigid registration, these transform parameters are the rotation matrix and the translation vector. In the pycpd package, this is achieved using the following snippet:
 
 ```python
 import numpy as np
