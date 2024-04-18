@@ -1,0 +1,8 @@
+# Permalinks
+permalink:           pretty
+markdown:            kramdown
+
+# Gems
+gems:
+  - jekyll-paginate
+  - jekyll-gist
