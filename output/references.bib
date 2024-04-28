@@ -1,0 +1,80 @@
+
+@article{zhang_fast_2020,
+	title = {fast and robust iterative closest point},
+	doi = {10.1109/tpami.2021.3054619},
+	abstract = {The Iterative Closest Point (ICP) algorithm and its variants are a fundamental technique for rigid registration between two point sets, with wide applications in different areas from robotics to 3D reconstruction. The main drawbacks for ICP are its slow convergence as well as its sensitivity to outliers, missing data, and partial overlaps. Recent work such as Sparse ICP achieves robustness via sparsity optimization at the cost of computational speed. In this paper, we propose a new method for robust registration with fast convergence. First, we show that the classical point-to-point ICP can be treated as a majorization-minimization (MM) algorithm, and propose an Anderson acceleration approach to speed up its convergence. In addition, we introduce a robust error metric based on the Welsch's function, which is minimized efficiently using the MM algorithm with Anderson acceleration. On challenging datasets with noises and partial overlaps, we achieve similar or better accuracy than Sparse ICP while being at least an order of magnitude faster. Finally, we extend the robust formulation to point-to-plane ICP, and solve the resulting problem using a similar Anderson-accelerated MM strategy. Our robust ICP methods improve the registration accuracy on benchmark datasets while being competitive in computational time.},
+	journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	author = {Zhang, Juyong and Yao, Yuxin and Deng, Bailin},
+	year = {2020},
+	doi = {10.1109/tpami.2021.3054619},
+	pmid = {33497327},
+	note = {ARXIV\_ID: 2007.07627
+MAG ID: 3122539943
+S2ID: 3b0724fdda26665e92f35301f59a9d45e47f774b},
+}
+
+@article{andriy_myronenko_point_2010,
+	title = {Point {Set} {Registration}: {Coherent} {Point} {Drift}},
+	volume = {32},
+	doi = {10.1109/tpami.2010.46},
+	abstract = {Point set registration is a key component in many computer vision tasks. The goal of point set registration is to assign correspondences between two sets of points and to recover the transformation that maps one point set to the other. Multiple factors, including an unknown nonrigid spatial transformation, large dimensionality of point set, noise, and outliers, make the point set registration a challenging problem. We introduce a probabilistic method, called the Coherent Point Drift (CPD) algorithm, for both rigid and nonrigid point set registration. We consider the alignment of two point sets as a probability density estimation problem. We fit the Gaussian mixture model (GMM) centroids (representing the first point set) to the data (the second point set) by maximizing the likelihood. We force the GMM centroids to move coherently as a group to preserve the topological structure of the point sets. In the rigid case, we impose the coherence constraint by reparameterization of GMM centroid locations with rigid parameters and derive a closed form solution of the maximization step of the EM algorithm in arbitrary dimensions. In the nonrigid case, we impose the coherence constraint by regularizing the displacement field and using the variational calculus to derive the optimal transformation. We also introduce a fast algorithm that reduces the method computation complexity to linear. We test the CPD algorithm for both rigid and nonrigid transformations in the presence of noise, outliers, and missing points, where CPD shows accurate results and outperforms current state-of-the-art methods.},
+	number = {12},
+	journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	author = {{Andriy Myronenko} and Myronenko, Andriy and {Xubo Song} and Song, Xubo},
+	month = dec,
+	year = {2010},
+	doi = {10.1109/tpami.2010.46},
+	pmid = {20975122},
+	note = {ARXIV\_ID: 0905.2635
+MAG ID: 2134236847
+S2ID: 65c260fce4fb6fe44ac44562b75d38b0ac5c38f5},
+	pages = {2262--2275},
+}
+
+@article{anthony_a_gatti_pycpd_2022,
+	title = {{PyCPD}: {Pure} {NumPy} {Implementation} of the {Coherent} {Point} {Drift} {Algorithm}},
+	volume = {7},
+	doi = {10.21105/joss.04681},
+	abstract = {Point cloud registration is a common problem in many areas of computer science, particularly computer vision. Point clouds come from many types of data such as LIDAR commonly used for self-driving vehicles, and other sorts of 3D scanners (e.g., structured light) are commonly used to map the surface of physical objects. Point clouds are also used to represent the surface of an anatomical structure extracted from a medical image. Point cloud registration finds a transformation from one point cloud to another. Point cloud registration has use cases in many fields from self-driving vehicles to medical imaging and virtual reality. Typically, point cloud registration is classified into rigid (only rotations or translations), affine (rigid + shearing and scaling) and non-rigid also called deformable registration (non-linear deformation).},
+	number = {80},
+	journal = {Journal of Open Source Software},
+	author = {{Anthony A. Gatti} and {Siavash Khallaghi}},
+	month = dec,
+	year = {2022},
+	doi = {10.21105/joss.04681},
+	note = {MAG ID: 4311798675
+S2ID: 5a9646e29c2f6918172a26ec7fe837cbe810fc88},
+	pages = {4681--4681},
+}
+
+@article{jiaolong_yang_go-icp_2016,
+	title = {Go-{ICP}: {A} {Globally} {Optimal} {Solution} to {3D} {ICP} {Point}-{Set} {Registration}},
+	volume = {38},
+	doi = {10.1109/tpami.2015.2513405},
+	abstract = {The Iterative Closest Point (ICP) algorithm is one of the most widely used methods for point-set registration. However, being based on local iterative optimization, ICP is known to be susceptible to local minima. Its performance critically relies on the quality of the initialization and only local optimality is guaranteed. This paper presents the first globally optimal algorithm, named Go-ICP, for Euclidean (rigid) registration of two 3D point-sets under the   \$L\_2\$       error metric defined in ICP. The Go-ICP method is based on a branch-and-bound scheme that searches the entire 3D motion space    \$SE(3)\$      . By exploiting the special structure of   \$SE(3)\$       geometry, we derive novel upper and lower bounds for the registration error function. Local ICP is integrated into the BnB scheme, which speeds up the new method while guaranteeing global optimality. We also discuss extensions, addressing the issue of outlier robustness. The evaluation demonstrates that the proposed method is able to produce reliable registration results regardless of the initialization. Go-ICP can be applied in scenarios where an optimal solution is desirable or where a good initialization is not always available.},
+	number = {11},
+	journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	author = {{Jiaolong Yang} and Yang, Jiaolong and {Hongdong Li} and Li, Hongdong and {Dylan Campbell} and Campbell, Dylan and {Yingmin Jia} and Jia, Yunde},
+	month = nov,
+	year = {2016},
+	doi = {10.1109/tpami.2015.2513405},
+	pmid = {26731638},
+	note = {ARXIV\_ID: 1605.03344
+MAG ID: 2344109021
+S2ID: 9956619795b48410283be50fae12c15fa3695161},
+	pages = {2241--2254},
+}
+
+@article{szymon_rusinkiewicz_efficient_2001,
+	title = {Efficient variants of the {ICP} algorithm},
+	doi = {10.1109/im.2001.924423},
+	abstract = {The ICP (Iterative Closest Point) algorithm is widely used for geometric alignment of three-dimensional models when an initial estimate of the relative pose is known. Many variants of ICP have been proposed, affecting all phases of the algorithm from the selection and matching of points to the minimization strategy. We enumerate and classify many of these variants, and evaluate their effect on the speed with which the correct alignment is reached. In order to improve convergence for nearly-flat meshes with small features, such as inscribed surfaces, we introduce a new variant based on uniform sampling of the space of normals. We conclude by proposing a combination of ICP variants optimized for high speed. We demonstrate an implementation that is able to align two range images in a few tens of milliseconds, assuming a good initial guess. This capability has potential application to real-time 3D model acquisition and model-based tracking.},
+	journal = {Proceedings Third International Conference on 3-D Digital Imaging and Modeling},
+	author = {{Szymon Rusinkiewicz} and Rusinkiewicz, Szymon and {Marc Levoy} and Levoy, Marc},
+	month = may,
+	year = {2001},
+	doi = {10.1109/im.2001.924423},
+	note = {MAG ID: 2119851068
+S2ID: 19d4da2841588fc75ccedcfb443d73772413d98e},
+	pages = {145--152},
+}
